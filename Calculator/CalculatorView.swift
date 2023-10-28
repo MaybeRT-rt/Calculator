@@ -34,13 +34,6 @@ class CalculatorView: UIView {
         return view
     }()
     
-//    let buttonsStack: UIStackView = {
-//        let stack = UIStackView()
-//        stack.axis = .vertical
-//        stack.distribution = .fillEqually
-//        return stack
-//    }()
-    
     let numberButtonsStack = CustomStackView(axis: .horizontal)
     let numberOneButtonsStack = CustomStackView(axis: .horizontal)
     let numberTwoButtonsStack = CustomStackView(axis: .horizontal)
@@ -56,26 +49,30 @@ class CalculatorView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func setupUI() {
         addSubview(customStack)
-
+        
         addRowToStack(stackView: numberButtonsStack, buttons: ["AC", "+/-", "%", "÷"])
         addRowToStack(stackView: numberOneButtonsStack, buttons: ["7", "8", "9", "x"])
         addRowToStack(stackView: numberTwoButtonsStack, buttons: ["4", "5", "6", "-"])
         addRowToStack(stackView: numberThreeButtonsStack, buttons: ["3", "2", "1", "+"])
-        addRowToStack(stackView: otherButtonsStack, buttons: ["0", ".", "="])
+        
+        addRowToStack(stackView: otherButtonsStack, buttons: ["0", "."])
+        
+        let equalButton = createButton(title: "=")
+        otherButtonsStack.addArrangedSubview(equalButton)
         
         customStack.addArrangedSubview(numberButtonsStack)
         customStack.addArrangedSubview(numberOneButtonsStack)
         customStack.addArrangedSubview(numberTwoButtonsStack)
         customStack.addArrangedSubview(numberThreeButtonsStack)
         customStack.addArrangedSubview(otherButtonsStack)
-
+        
         addSubview(viewNumberResult)
         viewNumberResult.addSubview(label)
-      
-
+        
+        
     }
     
     func addRowToStack(stackView: UIStackView, buttons: [String]) {
@@ -93,14 +90,11 @@ class CalculatorView: UIView {
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        
-        if title == "=" {
-            button.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        }
+    
         return button
     }
-
-
+    
+    
     
     @objc func buttonTapped() {
         
