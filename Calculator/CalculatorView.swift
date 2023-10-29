@@ -22,16 +22,10 @@ class CalculatorView: UIView {
     let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 32)
+        label.font = UIFont.systemFont(ofSize: 40)
         label.textColor = .white
         label.text = "0"
         return label
-    }()
-    
-    let viewNumber: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
     
     let numberButtonsStack = CustomStackView(axis: .horizontal)
@@ -52,7 +46,13 @@ class CalculatorView: UIView {
     
     func setupUI() {
         addSubview(customStack)
+        //addSubview(label)
+        addSubview(viewNumberResult)
+        viewNumberResult.addSubview(label)
+        //customStack.addArrangedSubview(viewNumberResult)
+//       viewNumberResult.addSubview(label)
         
+        // Оставляем остальной код без изменений
         addRowToStack(stackView: numberButtonsStack, buttons: ["AC", "+/-", "%", "÷"])
         addRowToStack(stackView: numberOneButtonsStack, buttons: ["7", "8", "9", "x"])
         addRowToStack(stackView: numberTwoButtonsStack, buttons: ["4", "5", "6", "-"])
@@ -68,12 +68,9 @@ class CalculatorView: UIView {
         customStack.addArrangedSubview(numberTwoButtonsStack)
         customStack.addArrangedSubview(numberThreeButtonsStack)
         customStack.addArrangedSubview(otherButtonsStack)
-        
-        addSubview(viewNumberResult)
-        viewNumberResult.addSubview(label)
-        
-        
     }
+
+    
     
     func addRowToStack(stackView: UIStackView, buttons: [String]) {
         let rowStack = CustomStackView(axis: .horizontal)
