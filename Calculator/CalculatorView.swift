@@ -16,22 +16,17 @@ class CalculatorView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .black
+
         return view
     }()
     
     let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 32)
+        label.font = UIFont.systemFont(ofSize: 40)
         label.textColor = .white
         label.text = "0"
         return label
-    }()
-    
-    let viewNumber: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
     
     let numberButtonsStack = CustomStackView(axis: .horizontal)
@@ -40,6 +35,11 @@ class CalculatorView: UIView {
     let numberThreeButtonsStack = CustomStackView(axis: .horizontal)
     let otherButtonsStack = CustomStackView(axis: .horizontal)
     
+//    let allStack: UIStackView = {
+//        let stack = UIStackView()
+//        stack.translatesAutoresizingMaskIntoConstraints = false
+//       return stack
+//    }()
     
     init() {
         super.init(frame: .zero)
@@ -52,6 +52,8 @@ class CalculatorView: UIView {
     
     func setupUI() {
         addSubview(customStack)
+        addSubview(viewNumberResult)
+        viewNumberResult.addSubview(label)
         
         addRowToStack(stackView: numberButtonsStack, buttons: ["AC", "+/-", "%", "÷"])
         addRowToStack(stackView: numberOneButtonsStack, buttons: ["7", "8", "9", "x"])
@@ -68,12 +70,9 @@ class CalculatorView: UIView {
         customStack.addArrangedSubview(numberTwoButtonsStack)
         customStack.addArrangedSubview(numberThreeButtonsStack)
         customStack.addArrangedSubview(otherButtonsStack)
-        
-        addSubview(viewNumberResult)
-        viewNumberResult.addSubview(label)
-        
-        
     }
+
+    
     
     func addRowToStack(stackView: UIStackView, buttons: [String]) {
         let rowStack = CustomStackView(axis: .horizontal)
