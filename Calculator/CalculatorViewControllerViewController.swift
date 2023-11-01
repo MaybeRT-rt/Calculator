@@ -10,8 +10,6 @@ import UIKit
 class CalculatorViewController: UIViewController {
     
     let calcView = CalculatorView()
-    
-    let topStackHeightMultiplier: CGFloat = 0.1
     let bottomStackHeightMultiplier: CGFloat = 0.1
 
     override func viewDidLoad() {
@@ -20,7 +18,6 @@ class CalculatorViewController: UIViewController {
         setupUI()
     }
 
-    
     func setupUI() {
         //view.addSubview(calcView.label)
         view.addSubview(calcView.viewNumberResult)
@@ -37,14 +34,14 @@ class CalculatorViewController: UIViewController {
             
             calcView.viewNumberResult.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),            calcView.viewNumberResult.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             calcView.viewNumberResult.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            calcView.viewNumberResult.heightAnchor.constraint(equalToConstant: 120),
+            calcView.viewNumberResult.heightAnchor.constraint(equalToConstant: 100),
 
-            calcView.label.topAnchor.constraint(equalTo: calcView.viewNumberResult.topAnchor, constant: 100),
+            calcView.label.topAnchor.constraint(equalTo: calcView.viewNumberResult.topAnchor, constant: 120),
             calcView.label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             calcView.label.widthAnchor.constraint(equalToConstant: 50),
             calcView.label.heightAnchor.constraint(equalToConstant: 50),
             
-            calcView.numberButtonsStack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: topStackHeightMultiplier),
+            calcView.numberButtonsStack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: bottomStackHeightMultiplier),
             calcView.numberButtonsStack.topAnchor.constraint(equalTo:  calcView.viewNumberResult.bottomAnchor),
             calcView.numberButtonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             calcView.numberButtonsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -72,7 +69,7 @@ class CalculatorViewController: UIViewController {
             calcView.otherButtonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             calcView.otherButtonsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             calcView.otherButtonsStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            calcView.otherButtonsStack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: topStackHeightMultiplier)
+            calcView.otherButtonsStack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: bottomStackHeightMultiplier)
         ])
     }
 

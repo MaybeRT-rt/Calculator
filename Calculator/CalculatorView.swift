@@ -46,13 +46,9 @@ class CalculatorView: UIView {
     
     func setupUI() {
         addSubview(customStack)
-        //addSubview(label)
         addSubview(viewNumberResult)
         viewNumberResult.addSubview(label)
-        //customStack.addArrangedSubview(viewNumberResult)
-//       viewNumberResult.addSubview(label)
         
-        // Оставляем остальной код без изменений
         addRowToStack(stackView: numberButtonsStack, buttons: ["AC", "+/-", "%", "÷"])
         addRowToStack(stackView: numberOneButtonsStack, buttons: ["7", "8", "9", "x"])
         addRowToStack(stackView: numberTwoButtonsStack, buttons: ["4", "5", "6", "-"])
