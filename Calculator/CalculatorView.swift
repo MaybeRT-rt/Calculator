@@ -16,6 +16,7 @@ class CalculatorView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .black
+
         return view
     }()
     
@@ -34,6 +35,11 @@ class CalculatorView: UIView {
     let numberThreeButtonsStack = CustomStackView(axis: .horizontal)
     let otherButtonsStack = CustomStackView(axis: .horizontal)
     
+//    let allStack: UIStackView = {
+//        let stack = UIStackView()
+//        stack.translatesAutoresizingMaskIntoConstraints = false
+//       return stack
+//    }()
     
     init() {
         super.init(frame: .zero)
