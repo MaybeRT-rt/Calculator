@@ -88,11 +88,11 @@ class CalculatorView: UIView {
     
     func getColor(for name: String) -> UIColor {
         if name == "÷" || name == "x" || name == "-" || name == "+" || name == "=" {
-                return .systemOrange
+                return .orange
         } else if  name == "AC" || name == "+/-" || name == "%" {
-            return .gray
+            return .brown
         } else {
-            return .systemBlue
+            return .lightGray
         }
     }
     
