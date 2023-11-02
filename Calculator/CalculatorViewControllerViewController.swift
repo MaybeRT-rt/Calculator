@@ -19,7 +19,6 @@ class CalculatorViewController: UIViewController {
     }
 
     func setupUI() {
-        //view.addSubview(calcView.label)
         view.addSubview(calcView.viewNumberResult)
         calcView.viewNumberResult.addSubview(calcView.label)
         view.addSubview(calcView.customStack)
@@ -29,19 +28,17 @@ class CalculatorViewController: UIViewController {
         calcView.customStack.addSubview(calcView.numberThreeButtonsStack)
         calcView.customStack.addSubview(calcView.otherButtonsStack)
         
-       // calcView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             
-            calcView.viewNumberResult.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),            calcView.viewNumberResult.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            calcView.viewNumberResult.topAnchor.constraint(equalTo: view.topAnchor),
+            calcView.viewNumberResult.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             calcView.viewNumberResult.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            calcView.viewNumberResult.heightAnchor.constraint(equalToConstant: 200),
-
+            calcView.viewNumberResult.heightAnchor.constraint(equalToConstant: 150),
+            
             calcView.label.topAnchor.constraint(equalTo: calcView.viewNumberResult.centerYAnchor, constant: 10),
             calcView.label.trailingAnchor.constraint(equalTo: calcView.viewNumberResult.trailingAnchor, constant: -20),
             calcView.label.widthAnchor.constraint(equalToConstant: 50),
             calcView.label.heightAnchor.constraint(equalToConstant: 50),
-
             
             calcView.numberButtonsStack.topAnchor.constraint(equalTo:  calcView.viewNumberResult.bottomAnchor),
             calcView.numberButtonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -66,9 +63,8 @@ class CalculatorViewController: UIViewController {
             calcView.otherButtonsStack.topAnchor.constraint(equalTo: calcView.numberThreeButtonsStack.bottomAnchor, constant: 1),
             calcView.otherButtonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             calcView.otherButtonsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            calcView.otherButtonsStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            calcView.otherButtonsStack.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
-
 }
 

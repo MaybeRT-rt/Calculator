@@ -35,11 +35,6 @@ class CalculatorView: UIView {
     let numberThreeButtonsStack = CustomStackView(axis: .horizontal)
     let otherButtonsStack = CustomStackView(axis: .horizontal)
     
-//    let allStack: UIStackView = {
-//        let stack = UIStackView()
-//        stack.translatesAutoresizingMaskIntoConstraints = false
-//       return stack
-//    }()
     
     init() {
         super.init(frame: .zero)
@@ -60,10 +55,10 @@ class CalculatorView: UIView {
         addRowToStack(stackView: numberTwoButtonsStack, buttons: ["4", "5", "6", "-"])
         addRowToStack(stackView: numberThreeButtonsStack, buttons: ["3", "2", "1", "+"])
         
-        addRowToStack(stackView: otherButtonsStack, buttons: ["0", "."])
+        let zeroButton = createButton(title: "0")
+        otherButtonsStack.addArrangedSubview(zeroButton)
         
-        let equalButton = createButton(title: "=")
-        otherButtonsStack.addArrangedSubview(equalButton)
+        addRowToStack(stackView: otherButtonsStack, buttons: [ ".", "="])
         
         customStack.addArrangedSubview(numberButtonsStack)
         customStack.addArrangedSubview(numberOneButtonsStack)
@@ -71,8 +66,6 @@ class CalculatorView: UIView {
         customStack.addArrangedSubview(numberThreeButtonsStack)
         customStack.addArrangedSubview(otherButtonsStack)
     }
-
-    
     
     func addRowToStack(stackView: UIStackView, buttons: [String]) {
         let rowStack = CustomStackView(axis: .horizontal)
@@ -85,18 +78,27 @@ class CalculatorView: UIView {
     func createButton(title: String) -> UIButton {
         let button = UIButton()
         button.setTitle(title, for: .normal)
-        button.backgroundColor = .clear
+        button.backgroundColor = getColor(for: title)
         button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 28)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     
         return button
     }
     
+    func getColor(for name: String) -> UIColor {
+        if name == "÷" || name == "x" || name == "-" || name == "+" || name == "=" {
+                return .systemOrange
+        } else if  name == "AC" || name == "+/-" || name == "%" {
+            return .gray
+        } else {
+            return .systemBlue
+        }
+    }
     
     
-    @objc func buttonTapped() {
-        
+    @objc func buttonTapped(_ sender: UIButton) {
+        print(sender.currentTitle)
     }
     
 }
