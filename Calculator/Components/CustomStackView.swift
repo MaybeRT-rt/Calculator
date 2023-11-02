@@ -14,8 +14,6 @@ class CustomStackView: UIStackView {
         self.axis = axis
         self.spacing = 1
         self.translatesAutoresizingMaskIntoConstraints = false
-//        self.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 170, right: 0)
-//        self.isLayoutMarginsRelativeArrangement = true
         self.distribution = .fillEqually
     }
     
