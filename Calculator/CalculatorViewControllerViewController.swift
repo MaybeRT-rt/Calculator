@@ -36,7 +36,7 @@ class CalculatorViewController: UIViewController {
             calcView.viewNumberResult.heightAnchor.constraint(equalToConstant: 150),
             
             calcView.label.topAnchor.constraint(equalTo: calcView.viewNumberResult.centerYAnchor, constant: 10),
-            calcView.label.trailingAnchor.constraint(equalTo: calcView.viewNumberResult.trailingAnchor, constant: -20),
+            calcView.label.trailingAnchor.constraint(equalTo: calcView.viewNumberResult.trailingAnchor, constant: -15),
             calcView.label.widthAnchor.constraint(equalToConstant: 50),
             calcView.label.heightAnchor.constraint(equalToConstant: 50),
             
